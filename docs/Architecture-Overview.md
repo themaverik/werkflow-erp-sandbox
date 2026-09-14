@@ -766,9 +766,11 @@ No response headers"]
 
 ## Related Documents
 
-- [ADR-001: Service Boundary Architecture](./adr/ADR-001-Service-Boundary-Architecture.md) — Detailed decisions
-- [ADR-002: API Contract Standardization](./adr/ADR-002-API-Contract-Standardization.md) — API design decisions
-- [ADR-002: User Identity and JWT Claims](./adr/ADR-002-User-Identity-And-JWT-Claims.md) — Identity architecture
+ADRs for this service live in the `werkflow-platform` repository, not here:
+
+- ADR-300 Service Boundary Architecture — werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md` — detailed decisions
+- ADR-301 API Contract Standardization — werkflow-platform `docs/adr/ERP-Sandbox/ADR-301-api-contract-standardization.md` — API design decisions
+- ADR-302 User Identity and JWT Claims — werkflow-platform `docs/adr/ERP-Sandbox/ADR-302-user-identity-and-jwt-claims.md` — identity architecture
 - [Independence-Checklist.md](./Independence-Checklist.md) — PR review checklist
 - [ROADMAP.md](../ROADMAP.md) — Implementation plan
 - [README.md](../README.md) — Quick start guide

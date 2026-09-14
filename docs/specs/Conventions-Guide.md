@@ -254,7 +254,7 @@ No conditional logic, no business rules. Caller decides what to do next.
 | [ROADMAP.md](../../Roadmap.md) | Implementation priorities, task tracking | Team |
 | [LLM.md](../../LLM.md) | Global conventions (commit, naming, git, docker) | Global |
 | [CLAUDE.md](../../CLAUDE.md) | Claude-specific extensions (change tracking, task execution) | Global |
-| [docs/adr/ADR-001-Service-Boundary-Architecture.md](../adr/ADR-001-Service-Boundary-Architecture.md) | Service boundaries, independence, user linking decisions | Architecture |
+| werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md` (platform repo) | Service boundaries, independence, user linking decisions | Architecture |
 | [docs/Architecture-Overview.md](../Architecture-Overview.md) | Visual explanation of three deployment scenarios and flow diagrams | Architecture |
 | [docs/Independence-Checklist.md](../Independence-Checklist.md) | PR review checklist, anti-patterns, forbidden imports | Quality |
 | [docs/specs/Implementation-Summary.md](./Implementation-Summary.md) | Executive summary of key decisions | Summary |

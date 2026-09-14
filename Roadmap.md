@@ -140,7 +140,7 @@ Not tracked for MVP.
 
 ## Related Documents
 
-- `docs/adr/ADR-001-Service-Boundary-Architecture.md`
-- `docs/adr/ADR-002-User-Identity-And-JWT-Claims.md`
+- ADR-300 Service Boundary Architecture — werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md`
+- ADR-302 User Identity and JWT Claims — werkflow-platform `docs/adr/ERP-Sandbox/ADR-302-user-identity-and-jwt-claims.md`
 - `docs/P1.5.2-INTEGRATION-TESTS-SPEC.md`
 - `docs/P1.5.2-INTEGRATION-TESTS-IMPLEMENTATION-NOTES.md`

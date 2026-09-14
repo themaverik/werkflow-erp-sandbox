@@ -714,4 +714,4 @@ curl http://localhost:8084/api/v1/actuator/health
 
 - [API Usage Guide](./API-Usage-Guide.md) - Complete API examples for all domains (standalone usage)
 - [README](../README.md) - Project overview
-- [Architecture Decision](./adr/ADR-001-Service-Boundary-Architecture.md) - Design rationale
+- ADR-300 Service Boundary Architecture — werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md` (in the `werkflow-platform` repository) - design rationale
