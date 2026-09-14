@@ -2,8 +2,8 @@
 
 This project follows standardized development conventions. Refer to:
 
-1. **[LLM.md](./LLM.md)** — Global development guidelines (all projects)
-2. **[CLAUDE.md](./CLAUDE.md)** — Claude-specific extensions and overrides
+1. **LLM.md** — Global development guidelines (all projects)
+2. **[CLAUDE.md](../../../CLAUDE.md)** — Claude-specific extensions and overrides
 
 ## Quick Reference
 
@@ -250,15 +250,15 @@ No conditional logic, no business rules. Caller decides what to do next.
 
 | Document | Purpose | Owner |
 |----------|---------|-------|
-| [README.md](../../README.md) | Quick start, API overview | Team |
-| [ROADMAP.md](../../Roadmap.md) | Implementation priorities, task tracking | Team |
-| [LLM.md](../../LLM.md) | Global conventions (commit, naming, git, docker) | Global |
-| [CLAUDE.md](../../CLAUDE.md) | Claude-specific extensions (change tracking, task execution) | Global |
+| [README.md](../../../README.md) | Quick start, API overview | Team |
+| [Roadmap.md](../../../Roadmap.md) | Implementation priorities, task tracking | Team |
+| LLM.md | Global conventions (commit, naming, git, docker) | Global |
+| [CLAUDE.md](../../../CLAUDE.md) | Claude-specific extensions (change tracking, task execution) | Global |
 | werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md` (platform repo) | Service boundaries, independence, user linking decisions | Architecture |
-| [docs/Architecture-Overview.md](../Architecture-Overview.md) | Visual explanation of three deployment scenarios and flow diagrams | Architecture |
-| [docs/Independence-Checklist.md](../Independence-Checklist.md) | PR review checklist, anti-patterns, forbidden imports | Quality |
-| [docs/specs/Implementation-Summary.md](./Implementation-Summary.md) | Executive summary of key decisions | Summary |
-| [docs/specs/Conventions-Guide.md](./Conventions-Guide.md) | This file — quick reference for conventions | Reference |
+| [docs/explanation/Architecture-Overview.md](../../explanation/Architecture-Overview.md) | Visual explanation of three deployment scenarios and flow diagrams | Architecture |
+| [docs/project/qa/Independence-Checklist.md](../qa/Independence-Checklist.md) | PR review checklist, anti-patterns, forbidden imports | Quality |
+| [docs/project/reports/Implementation-Summary.md](../reports/Implementation-Summary.md) | Executive summary of key decisions | Summary |
+| [docs/project/design-notes/Conventions-Guide.md](./Conventions-Guide.md) | This file — quick reference for conventions | Reference |
 
 ---
 
@@ -285,7 +285,7 @@ No conditional logic, no business rules. Caller decides what to do next.
 
 ### Creating a Pull Request
 
-1. Follow template in [LLM.md](./LLM.md)
+1. Follow template in LLM.md
 2. Title: `<type>(<scope>): <subject>` (e.g., `feat(inventory): add multi-tenancy`)
 3. Description: Summary, Changes, Testing, Checklist
 4. Request review

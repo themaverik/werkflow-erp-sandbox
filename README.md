@@ -89,16 +89,16 @@ Requests may authenticate with `X-API-Key: <raw-key>` instead of a Bearer token.
 
 Generate a key via `POST /api/v1/api-keys/generate` (requires `ADMIN`, `SUPER_ADMIN`, or `ENGINE_SERVICE` role). Store the returned `rawKey` securely (e.g. OpenBao) — it cannot be retrieved again.
 
-See [docs/API-Usage-Guide.md](./docs/API-Usage-Guide.md) for manual key registration and revocation steps.
+See [docs/how-to/API-Usage-Guide.md](./docs/how-to/API-Usage-Guide.md) for manual key registration and revocation steps.
 
 ## Documentation
 
 | Document | Description |
 |----------|-------------|
-| [docs/Architecture-Overview.md](./docs/Architecture-Overview.md) | Architecture, design principles, and business flow diagrams |
-| [docs/API-Usage-Guide.md](./docs/API-Usage-Guide.md) | Step-by-step API examples for all domains |
-| [docs/Werkflow-Integration-Guide.md](./docs/Werkflow-Integration-Guide.md) | Connector setup, BPMN workflow examples |
-| [docs/Independence-Checklist.md](./docs/Independence-Checklist.md) | PR review checklist and anti-pattern guide |
+| [docs/explanation/Architecture-Overview.md](./docs/explanation/Architecture-Overview.md) | Architecture, design principles, and business flow diagrams |
+| [docs/how-to/API-Usage-Guide.md](./docs/how-to/API-Usage-Guide.md) | Step-by-step API examples for all domains |
+| [docs/how-to/Werkflow-Integration-Guide.md](./docs/how-to/Werkflow-Integration-Guide.md) | Connector setup, BPMN workflow examples |
+| [docs/project/qa/Independence-Checklist.md](./docs/project/qa/Independence-Checklist.md) | PR review checklist and anti-pattern guide |
 
 ## License
 

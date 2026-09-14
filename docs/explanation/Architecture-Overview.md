@@ -771,7 +771,7 @@ ADRs for this service live in the `werkflow-platform` repository, not here:
 - ADR-300 Service Boundary Architecture — werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md` — detailed decisions
 - ADR-301 API Contract Standardization — werkflow-platform `docs/adr/ERP-Sandbox/ADR-301-api-contract-standardization.md` — API design decisions
 - ADR-302 User Identity and JWT Claims — werkflow-platform `docs/adr/ERP-Sandbox/ADR-302-user-identity-and-jwt-claims.md` — identity architecture
-- [Independence-Checklist.md](./Independence-Checklist.md) — PR review checklist
-- [ROADMAP.md](../ROADMAP.md) — Implementation plan
-- [README.md](../README.md) — Quick start guide
+- [Independence-Checklist.md](../project/qa/Independence-Checklist.md) — PR review checklist
+- [Roadmap.md](../../Roadmap.md) — Implementation plan
+- [README.md](../../README.md) — Quick start guide
 

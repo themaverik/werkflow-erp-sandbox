@@ -660,6 +660,6 @@ All errors follow this format:
 
 ## Related Documents
 
-- **[README](../README.md)** — Project overview and quick start
-- **[Integration Guide](./WERKFLOW-INTEGRATION-GUIDE.md)** — Connector setup and BPMN examples
-- **[API Overview](../README.md#api-overview)** — Complete endpoint reference
+- **[README](../../README.md)** — Project overview and quick start
+- **[Integration Guide](./Werkflow-Integration-Guide.md)** — Connector setup and BPMN examples
+- **[API Overview](../../README.md#api-overview)** — Complete endpoint reference
