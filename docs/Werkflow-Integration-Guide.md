@@ -620,7 +620,7 @@ Set reasonable timeouts based on operation:
 
 ```bash
 # 1. Start Werkflow-ERP
-cd werkflow-erp
+cd werkflow-erp-sandbox
 mvn spring-boot:run
 
 # 2. Get JWT token

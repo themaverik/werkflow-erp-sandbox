@@ -62,7 +62,7 @@
   - Estimate: 3h *(7 tests — 4 service, 3 controller — all green)*
 
 - [x] **P1.6.2** CustodyMapping entity + API
-  - Move `CustodyMapping` from werkflow-enterprise admin-service to werkflow-erp (ADR-004)
+  - Move `CustodyMapping` from werkflow-enterprise admin-service to werkflow-erp-sandbox (ADR-004)
   - Entity: `custody_owner (VARCHAR), candidate_groups (TEXT[]), tenant_id`
   - Endpoints: `GET/POST/PUT/DELETE /api/v1/custody-mappings`
   - Tenant-scoped, paginated, idempotent upsert

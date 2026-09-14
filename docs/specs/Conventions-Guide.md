@@ -66,7 +66,7 @@ project/CLAUDE.md   # Project-specific overrides (if needed, create it)
 
 ---
 
-## Key Conventions for werkflow-erp
+## Key Conventions for werkflow-erp-sandbox
 
 ### Documentation File Names
 
@@ -162,7 +162,7 @@ Co-Authored-By: Claude Haiku <noreply@anthropic.com>"
 
 **Port allocation**: Documented in README.md and docker-compose.yml
 ```
-werkflow-erp: 8084
+werkflow-erp-sandbox: 8084
 PostgreSQL: 5433
 Keycloak: 8090
 ```
@@ -202,7 +202,7 @@ Keycloak: 8090
 
 ### 1. Independence Principle
 
-werkflow-erp **must not import werkflow code**:
+werkflow-erp-sandbox **must not import werkflow code**:
 ```java
 [NO] import com.werkflow.engine.*;
 [NO] import org.keycloak.admin.*;
@@ -331,7 +331,7 @@ fi
 - [YES] Use **Title-Case** for markdown filenames
 - [YES] Follow **Conventional Commits** for git messages
 - [YES] Update **ROADMAP.md** after completing tasks
-- [YES] No **werkflow imports** in werkflow-erp
+- [YES] No **werkflow imports** in werkflow-erp-sandbox
 - [YES] Use **opaque platform user IDs** (don't validate externally)
 - [YES] Provide **pure status updates** (no workflows)
 - [YES] **Don't push** without confirming first (unless explicitly authorized)

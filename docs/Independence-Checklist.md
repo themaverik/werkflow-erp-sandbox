@@ -1,6 +1,6 @@
-# werkflow-erp Independence Checklist
+# werkflow-erp-sandbox Independence Checklist
 
-**Purpose**: Ensure werkflow-erp remains a standalone, workflow-agnostic data service.
+**Purpose**: Ensure werkflow-erp-sandbox remains a standalone, workflow-agnostic data service.
 
 Use this checklist:
 - Before creating new features
@@ -84,7 +84,7 @@ Use this checklist:
   // CORRECT
   @Nullable
   private String externalProcessId;  // OPTIONAL
-  // For caller's tracking, werkflow-erp doesn't use it
+  // For caller's tracking, werkflow-erp-sandbox doesn't use it
   ```
 
 - [ ] **Status enums for state machine**
@@ -126,7 +126,7 @@ Use this checklist:
 ```
 Question: Does this feature need to call Keycloak, Admin, Engine, SAP, etc.?
 
-REJECT if YES: werkflow-erp must be self-contained
+REJECT if YES: werkflow-erp-sandbox must be self-contained
 
 OK to proceed if NO: Pure data operation
 ```
@@ -136,7 +136,7 @@ OK to proceed if NO: Pure data operation
 ```
 Question: Does this code only work with BPMN / Engine / workflows?
 
-REJECT if YES: werkflow-erp must be orchestration-agnostic
+REJECT if YES: werkflow-erp-sandbox must be orchestration-agnostic
   Rewrite as generic status updates
 
 Examples of rejectable code:
@@ -229,8 +229,8 @@ fi
 
 #### 2. Verify Standalone Operation
 ```bash
-# Start only werkflow-erp and PostgreSQL (no werkflow platform)
-docker compose up -d postgres werkflow-erp
+# Start only werkflow-erp-sandbox and PostgreSQL (no werkflow platform)
+docker compose up -d postgres werkflow-erp-sandbox
 
 # Wait for startup
 sleep 10
@@ -249,7 +249,7 @@ curl -H "Authorization: Bearer $TOKEN" \
   http://localhost:8084/api/v1/hr/employees
 # Expected: {"content": [...], "pageable": {...}}
 
-echo "PASS: werkflow-erp works standalone"
+echo "PASS: werkflow-erp-sandbox works standalone"
 ```
 
 #### 3. Verify Multi-Tenant Isolation
@@ -333,7 +333,7 @@ public class EmployeeService {
 public void approveAssetRequest(Long assetRequestId) {
     AssetRequest request = repository.findById(assetRequestId);
 
-    // Business logic embedded here — this is NOT werkflow-erp's concern
+    // Business logic embedded here — this is NOT werkflow-erp-sandbox's concern
     if (shouldCheckBudget(request)) {         // NOT OUR CONCERN
         if (!budgetAvailable(request)) {       // BUSINESS RULE
             notifyManager(request);            // NOTIFICATION - NOT OUR CONCERN
