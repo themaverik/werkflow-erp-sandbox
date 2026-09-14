@@ -2,9 +2,18 @@
   <img src="public/logo.png" alt="WERP Logo" width="300" />
 </div>
 
-# Werkflow ERP
+# Werkflow ERP Sandbox
 
-A standalone CRUD data service for HR, Finance, Procurement, and Inventory domains. Designed for independent deployment or integration with the [Werkflow](https://github.com/themaverik/werkflow) workflow orchestration platform.
+A sandbox system of record for testing and demonstrations. It serves HR, Finance, Procurement and
+Inventory data over a real REST API, so workflows in the [Werkflow](https://github.com/themaverik/werkflow)
+platform can be exercised end to end against something that behaves like a real ERP.
+
+**This is not an ERP, and it is not an official Werkflow product.** It exists so that connectors,
+BPMN examples and conformance tests have a deterministic target to run against. Werkflow deliberately
+does not own a data layer — business data belongs in your own system of record, reached through a
+registered connector. Point the connectors at your ERP and this repository stops being needed.
+
+Do not deploy it as a production ERP or hold real business data in it.
 
 | Property        | Value                                                          |
 |-----------------|----------------------------------------------------------------|
@@ -26,6 +35,14 @@ Provides CRUD APIs for five domains:
 - **Identity**: User profile cache (OIDC), custody-owner-to-candidate-group mappings
 
 Does not implement business approval logic, notifications, or workflow routing — those belong to the caller.
+
+## What This Service Is Not
+
+It is not a production ERP and carries none of the guarantees one needs. There is no migration path
+off it, no data retention or backup story, no hardening review, and no commitment to a stable schema
+between releases.
+
+Treat every row in it as disposable test data.
 
 ## Prerequisites
 
