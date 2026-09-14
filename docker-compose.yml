@@ -42,8 +42,10 @@ services:
     volumes:
       - business_logs:/app/logs
     networks:
-      - werkflow-network
-      - werkflow-erp-sandbox-network
+      werkflow-network:
+        aliases:
+          - erp-sandbox
+      werkflow-erp-sandbox-network: {}
     restart: unless-stopped
     external_links:
       - werkflow-postgres:postgres
