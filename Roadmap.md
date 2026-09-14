@@ -52,7 +52,7 @@
 **Estimate**: 8–10 hours
 **Required by**: werkflow-enterprise M3 (Groups 2–3 cannot wire ERP data without these)
 
-- [ ] **P1.5.2** Integration tests — `@WebMvcTest + MockMvc` approach; spec in `docs/P1.5.2-INTEGRATION-TESTS-SPEC.md` (4h)
+- [ ] **P1.5.2** Integration tests — `@WebMvcTest + MockMvc` approach; spec in `docs/project/reports/P1.5.2-Integration-Tests-Spec.md` (4h)
 
 - [x] **P1.6.1** Extend `users` table + profile endpoint
   - Add columns: `department_code`, `employee_id`, `cost_center`, `is_poc` to `users` table
@@ -142,5 +142,5 @@ Not tracked for MVP.
 
 - ADR-300 Service Boundary Architecture — werkflow-platform `docs/adr/ERP-Sandbox/ADR-300-service-boundary-architecture.md`
 - ADR-302 User Identity and JWT Claims — werkflow-platform `docs/adr/ERP-Sandbox/ADR-302-user-identity-and-jwt-claims.md`
-- `docs/P1.5.2-INTEGRATION-TESTS-SPEC.md`
-- `docs/P1.5.2-INTEGRATION-TESTS-IMPLEMENTATION-NOTES.md`
+- `docs/project/reports/P1.5.2-Integration-Tests-Spec.md`
+- `docs/project/reports/P1.5.2-Integration-Tests-Implementation-Notes.md`
