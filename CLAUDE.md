@@ -1,4 +1,4 @@
-# werkflow-erp Development Configuration
+# werkflow-erp-sandbox Development Configuration
 
 **Status:** pre-MVP / graphify-enabled  
 **Tech stack:** ERP domain modeling + code graph (graphify)  

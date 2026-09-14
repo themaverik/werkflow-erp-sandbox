@@ -1,7 +1,7 @@
 # Implementation Summary: Two Key Architecture Decisions
 
 **Date**: 2026-04-06
-**For**: werkflow-erp independence and platform user integration
+**For**: werkflow-erp-sandbox independence and platform user integration
 
 ---
 
@@ -11,9 +11,9 @@
 
 **The Pattern: Optional `platformUserId` Field**
 
-werkflow-erp does NOT manage platform users. Instead:
+werkflow-erp-sandbox does NOT manage platform users. Instead:
 
-1. **HR Employee is managed by werkflow-erp**
+1. **HR Employee is managed by werkflow-erp-sandbox**
    ```java
    @Entity
    public class Employee {
@@ -36,7 +36,7 @@ werkflow-erp does NOT manage platform users. Instead:
    Calls: PATCH /api/v1/hr/employees/{id}/platform-link
    Body: { platformUserId: "user-uuid-123" }
         (next step)
-   werkflow-erp stores the link
+   werkflow-erp-sandbox stores the link
    ```
 
 3. **Query by platform user ID**
@@ -50,10 +50,10 @@ werkflow-erp does NOT manage platform users. Instead:
 
 | Aspect | Benefit |
 |--------|---------|
-| **No coupling** | werkflow-erp never imports Keycloak, Azure AD, or any IAM library |
+| **No coupling** | werkflow-erp-sandbox never imports Keycloak, Azure AD, or any IAM library |
 | **Works with any platform** | Keycloak, Azure AD, LDAP, custom system — all use the same API |
 | **Works without platform** | `platformUserId = null` is valid. Employees can exist without platform access. |
-| **Event-driven** | External system drives the linking, not werkflow-erp |
+| **Event-driven** | External system drives the linking, not werkflow-erp-sandbox |
 | **Bidirectional queries** | Find employees by platformUserId OR find platformUserId by employee |
 
 **Implementation Checklist:**
@@ -70,19 +70,19 @@ werkflow-erp does NOT manage platform users. Instead:
 
 ---
 
-### 2. werkflow-erp Must Be Completely Independent
+### 2. werkflow-erp-sandbox Must Be Completely Independent
 
 **The Principle: Zero werkflow Dependencies**
 
-werkflow-erp is a **standalone business data service**. It:
+werkflow-erp-sandbox is a **standalone business data service**. It:
 
 [YES] **Works without werkflow:**
 ```
 Company A doesn't use werkflow. They have their own HR app.
      (next step)
-They call werkflow-erp REST APIs
+They call werkflow-erp-sandbox REST APIs
      (next step)
-werkflow-erp stores/retrieves data
+werkflow-erp-sandbox stores/retrieves data
      (next step)
 Completely works.
 ```
@@ -91,20 +91,20 @@ Completely works.
 ```
 werkflow Platform needs to test workflows.
      (next step)
-werkflow starts werkflow-erp (Docker)
+werkflow starts werkflow-erp-sandbox (Docker)
      (next step)
-werkflow calls werkflow-erp REST APIs during test
+werkflow calls werkflow-erp-sandbox REST APIs during test
      (next step)
-werkflow-erp has NO IDEA it's being used for testing
+werkflow-erp-sandbox has NO IDEA it's being used for testing
      (next step)
 Both systems work correctly
 ```
 
 [YES] **Works with any orchestrator (Zapier, SAP, custom scheduler):**
 ```
-Multiple systems call the same werkflow-erp APIs
+Multiple systems call the same werkflow-erp-sandbox APIs
      (next step)
-werkflow-erp doesn't know or care which system is calling
+werkflow-erp-sandbox doesn't know or care which system is calling
      (next step)
 All systems get consistent data
 ```
@@ -119,17 +119,17 @@ All systems get consistent data
 [ ] Ensure all status updates are pure state transitions (no business logic)
 [ ] Add CI/CD check: Reject PRs with werkflow imports
 [ ] Document: Independent deployment guide
-[ ] Test: Verify werkflow-erp works standalone (no Engine, Admin, Portal)
+[ ] Test: Verify werkflow-erp-sandbox works standalone (no Engine, Admin, Portal)
 ```
 
 **CI/CD Guard:**
 ```bash
 # Add to pre-commit hooks or CI pipeline
 if grep -r "import com.werkflow" services/business/src/main/java ; then
-  echo "ERROR: werkflow-erp must not import werkflow code"
+  echo "ERROR: werkflow-erp-sandbox must not import werkflow code"
   exit 1
 fi
-echo "[YES] werkflow-erp is independent"
+echo "[YES] werkflow-erp-sandbox is independent"
 ```
 
 ---
@@ -138,7 +138,7 @@ echo "[YES] werkflow-erp is independent"
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│                     werkflow-erp                               │
+│                     werkflow-erp-sandbox                       │
 │                                                                │
 │  Pure Business Data Service                                   │
 │  • HR, Finance, Procurement, Inventory                        │
@@ -150,7 +150,7 @@ echo "[YES] werkflow-erp is independent"
 │  Platform User Linking (WITHOUT coupling):                    │
 │  • Employee.platformUserId is optional field                  │
 │  • External system manages the linking                        │
-│  • werkflow-erp just stores it                                │
+│  • werkflow-erp-sandbox just stores it                        │
 │                                                                │
 │  Can be used by:                                              │
 │  [YES] werkflow (for testing workflows)                          │
@@ -168,8 +168,8 @@ echo "[YES] werkflow-erp is independent"
 
 ### Test 1: Standalone Operation
 ```bash
-# Start only werkflow-erp and PostgreSQL
-docker compose up -d postgres werkflow-erp
+# Start only werkflow-erp-sandbox and PostgreSQL
+docker compose up -d postgres werkflow-erp-sandbox
 
 # No Engine, Admin, or Portal needed
 # Test that it works
@@ -180,11 +180,11 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ### Test 2: werkflow Integration
 ```bash
-# Start full werkflow platform including werkflow-erp
+# Start full werkflow platform including werkflow-erp-sandbox
 docker compose -f docker-compose.yml \
              -f docker-compose.business.yml up -d
 
-# Test that werkflow can call werkflow-erp
+# Test that werkflow can call werkflow-erp-sandbox
 # (werkflow's responsibility to verify this works)
 ```
 
@@ -203,7 +203,7 @@ grep -r "KeycloakAdmin" services/business/
 
 ## Migration Path (If You Currently Have Coupling)
 
-**If werkflow-erp currently has werkflow imports:**
+**If werkflow-erp-sandbox currently has werkflow imports:**
 
 ### Step 1: Identify All werkflow Imports
 ```bash
@@ -233,18 +233,18 @@ public AssetRequest updateStatus(Long assetId, String newStatus) {
 }
 ```
 
-### Step 3: Update Calling Code (werkflow side, not werkflow-erp)
+### Step 3: Update Calling Code (werkflow side, not werkflow-erp-sandbox)
 
 **werkflow Engine now orchestrates:**
 ```java
 // In werkflow's ExternalApiCallDelegate
-// Before: werkflow-erp had the approval logic
+// Before: werkflow-erp-sandbox had the approval logic
 // Now: werkflow Engine has the approval logic
 
-1. Call werkflow-erp: PATCH /asset-requests/{id}/status
-   werkflow-erp: Updates status, returns confirmation
+1. Call werkflow-erp-sandbox: PATCH /asset-requests/{id}/status
+   werkflow-erp-sandbox: Updates status, returns confirmation
 
-2. werkflow-erp returns the response
+2. werkflow-erp-sandbox returns the response
 
 3. werkflow Engine evaluates: "Is status APPROVED?"
 
@@ -279,11 +279,11 @@ public AssetRequest updateStatus(Long assetId, String newStatus) {
 
 ## Key Takeaway
 
-werkflow-erp is a **business data service**, not a workflow component.
+werkflow-erp-sandbox is a **business data service**, not a workflow component.
 
 It provides **pure CRUD + validation**, no orchestration.
 
 External systems (werkflow or others) orchestrate, decide business logic, and manage workflows.
 
-werkflow-erp **just stores and retrieves data**—and does it for anyone who calls it.
+werkflow-erp-sandbox **just stores and retrieves data**—and does it for anyone who calls it.
 

@@ -1,8 +1,8 @@
 version: '3.8'
-name: werkflow-erp
+name: werkflow-erp-sandbox
 
 # ================================================================
-# WERKFLOW ERP — STANDALONE DOCKER COMPOSE
+# WERKFLOW ERP SANDBOX — STANDALONE DOCKER COMPOSE
 # ================================================================
 # Business Service standalone deployment for external integration testing.
 # Shares the same PostgreSQL database as the main Werkflow platform.
@@ -42,8 +42,10 @@ services:
     volumes:
       - business_logs:/app/logs
     networks:
-      - werkflow-network
-      - werkflow-erp-network
+      werkflow-network:
+        aliases:
+          - erp-sandbox
+      werkflow-erp-sandbox-network: {}
     restart: unless-stopped
     external_links:
       - werkflow-postgres:postgres
@@ -65,6 +67,6 @@ networks:
   werkflow-network:
     external: true
     name: werkflow-network
-  werkflow-erp-network:
+  werkflow-erp-sandbox-network:
     driver: bridge
-    name: werkflow-erp-network
+    name: werkflow-erp-sandbox-network
